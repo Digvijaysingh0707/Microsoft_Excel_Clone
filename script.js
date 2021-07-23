@@ -40,4 +40,13 @@ let column = $(`<div class="column-name colId-${i}" id="colCod-${ans}">${ans}</d
         $(".input-cell.selected").removeClass("selected");
         $(this).addClass("selected");
     })
+    //make cell editable on double click
+    $(".input-cell").dblclick(function(){
+        //remove the previous selected cell
+        $(".input-cell.selected").removeClass("selected");
+        $(this).addClass("selected");
+        $(this).attr("contenteditable","true");
+        $(this).focus();
+
+    })
 });
