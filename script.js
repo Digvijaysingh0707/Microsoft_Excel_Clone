@@ -82,6 +82,9 @@ let column = $(`<div class="column-name colId-${i}" id="colCod-${ans}">${ans}</d
         $(this).focus();
 
     })
+    $(".input-cell").blur(function(){
+        $(".input-cell.selected").attr("contenteditable","false");
+    })
     //scroll Left and top
     $(".input-cell-container").scroll(function(){
         $(".coloumn-name-container").scrollLeft(this.scrollLeft);
@@ -95,3 +98,42 @@ function getRowCol(ele){
     return [rowId,colId];
 
 }
+
+//adding style to cells
+function updateCell(property,value){
+    $(".input-cell.selected").each(function(){
+       $(this).css(property,value);
+    })
+    
+
+}
+//make cell content bold
+$(".icon-bold").click(function(){
+    if($(this).hasClass("selected")){
+        updateCell("font-weight","")
+    }
+    else{
+        updateCell("font-weight","bold");
+    }
+
+})
+//make cell content italic
+$(".icon-italic").click(function(){
+    if($(this).hasClass("selected")){
+        updateCell("font-style","")
+    }
+    else{
+        updateCell("font-style","italic");
+    }
+
+})
+//make cell content underline
+$(".icon-underline").click(function(){
+    if($(this).hasClass("selected")){
+        updateCell("text-decoration","")
+    }
+    else{
+        updateCell("text-decoration","underline");
+    }
+
+})
