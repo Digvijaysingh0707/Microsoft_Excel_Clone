@@ -1,3 +1,23 @@
+let defaultProperties={
+    text: "",
+    "font-weight": "",
+    "font-style": "",
+    "text-decoration": "",
+    "text-align": "left",
+    "background-color":"white",
+    "colot": "black",
+    "font-family": "Noto Sans",
+    "font-size": 14
+
+}
+let cellData={
+    "Sheet1":[
+
+    ]
+}
+let selectedSheet="Sheet1";
+let totalSheets=1;
+
 $(document).ready(function(){
     let cellContainer=$(".input-cell-container");
     for(let i=1;i<=100;i++){
@@ -100,7 +120,7 @@ function getRowCol(ele){
 }
 
 //adding style to cells
-function updateCell(property,value){
+function updateCell(property,value,defaultPossible){
     $(".input-cell.selected").each(function(){
        $(this).css(property,value);
     })
@@ -110,30 +130,30 @@ function updateCell(property,value){
 //make cell content bold
 $(".icon-bold").click(function(){
     if($(this).hasClass("selected")){
-        updateCell("font-weight","")
+        updateCell("font-weight","",true);
     }
     else{
-        updateCell("font-weight","bold");
+        updateCell("font-weight","bold",false);
     }
 
 })
 //make cell content italic
 $(".icon-italic").click(function(){
     if($(this).hasClass("selected")){
-        updateCell("font-style","")
+        updateCell("font-style","",true)
     }
     else{
-        updateCell("font-style","italic");
+        updateCell("font-style","italic",false);
     }
 
 })
 //make cell content underline
 $(".icon-underline").click(function(){
     if($(this).hasClass("selected")){
-        updateCell("text-decoration","")
+        updateCell("text-decoration","",true)
     }
     else{
-        updateCell("text-decoration","underline");
+        updateCell("text-decoration","underline",false);
     }
 
 })
